@@ -4,7 +4,13 @@ import React, { useState } from "react";
 import type { EvaluationResult } from "@/server/evaluation/types";
 import { HeroSection } from "./hero-section";
 import { KpiCards } from "./kpi-cards";
+import { ExecutiveRightStack } from "./executive-right-stack";
 import { RecoveryFunnel } from "./recovery-funnel";
+import { FailureDonutChart } from "./failure-donut-chart";
+import { RecoveryStrategiesCard } from "./recovery-strategies-card";
+import { RecoveryTrendChart } from "./recovery-trend-chart";
+import { RecentRecoveryTable } from "./recent-recovery-table";
+import { TrustRibbon } from "./trust-ribbon";
 import { DecisionsSummary } from "./decisions-summary";
 import { SafetySection } from "./safety-section";
 import { BaselineComparison } from "./baseline-comparison";
@@ -74,29 +80,31 @@ export function DashboardClient({ initialEvaluation }: DashboardClientProps) {
   };
 
   return (
-    <div className="space-y-8 pb-16">
-      {/* 1. Hero Section with Prominent Test Mode Simulation Badge */}
+    <div className="space-y-10 pb-16">
+      {/* 1. Hero Title Banner matching Slide 4 Top */}
       <section id="overview" className="scroll-mt-20">
         <HeroSection />
       </section>
 
       {/* Control Bar: Evaluation Refresh & Last Updated */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white/70 px-4 py-2.5 shadow-2xs backdrop-blur-xs dark:border-slate-800 dark:bg-slate-900/70">
-        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-          <Clock className="h-3.5 w-3.5" />
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#1c2438] bg-[#0c1019]/90 px-5 py-3 shadow-xl backdrop-blur-sm">
+        <div className="flex flex-wrap items-center gap-2.5 text-xs text-slate-400">
+          <Clock className="h-3.5 w-3.5 text-cyan-400" />
           <span>
             Benchmark Dataset:{" "}
-            <strong className="font-mono text-slate-700 dark:text-slate-200">
+            <strong className="font-mono text-white">
               {evaluation.datasetSize.toLocaleString("en-IN")} cases
             </strong>
           </span>
-          <span className="text-slate-300 dark:text-slate-700">•</span>
-          <span>Last Evaluated: {lastRefreshedAt}</span>
+          <span className="text-slate-600">•</span>
+          <span className="font-mono text-[11px] text-slate-400">
+            Last Evaluated: {lastRefreshedAt}
+          </span>
         </div>
 
         <div className="flex items-center gap-2">
           {refreshError && (
-            <span className="flex items-center gap-1 text-xs text-rose-600">
+            <span className="flex items-center gap-1 font-mono text-xs text-rose-400">
               <AlertCircle className="h-3.5 w-3.5" />
               {refreshError}
             </span>
@@ -106,7 +114,7 @@ export function DashboardClient({ initialEvaluation }: DashboardClientProps) {
             size="sm"
             onClick={handleRerunEvaluation}
             disabled={isRefreshing}
-            className="h-8 gap-1.5 text-xs"
+            className="h-8 gap-1.5 border border-red-500/40 bg-red-500/10 font-mono text-xs font-semibold text-red-300 shadow-[0_0_12px_rgba(239,68,68,0.2)] hover:bg-red-500/20 hover:text-white"
           >
             <RotateCcw className={`h-3.5 w-3.5 ${isRefreshing ? "animate-spin" : ""}`} />
             <span>{isRefreshing ? "Re-evaluating 1,000 Cases..." : "Re-run Evaluation"}</span>
@@ -114,66 +122,117 @@ export function DashboardClient({ initialEvaluation }: DashboardClientProps) {
         </div>
       </div>
 
-      {/* 2. Primary KPI Cards - Revenue at Risk */}
-      <section id="risk-radar" className="scroll-mt-20">
-        <KpiCards metrics={evaluation.revenueSummary} />
-      </section>
+      {/* ========================================================================= */}
+      {/* 2. SLIDE 4 EXECUTIVE CONSOLE (FAITHFUL COMPOSITION OF SLIDE 4)            */}
+      {/* ========================================================================= */}
+      <div className="space-y-5">
+        {/* Upper Block: 4 KPI Cards + Funnel & Donut (Left 9 cols) vs Date & Context Stack (Right 3 cols) */}
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
+          {/* Main Left Block (9 Columns) */}
+          <div className="space-y-5 lg:col-span-9">
+            {/* 4 KPI Cards */}
+            <div id="risk-radar" className="scroll-mt-20">
+              <KpiCards metrics={evaluation.revenueSummary} />
+            </div>
 
-      {/* 3. Recovery Funnel & Flow - AI Diagnosis */}
-      <section id="ai-diagnosis" className="scroll-mt-20 space-y-8">
-        <RecoveryFunnel metrics={evaluation.revenueSummary} />
-        <DecisionsSummary metrics={evaluation.decisionSummary} />
-      </section>
+            {/* Funnel & Failure Categories Row */}
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-12">
+              <div className="md:col-span-7">
+                <RecoveryFunnel metrics={evaluation.revenueSummary} />
+              </div>
+              <div className="md:col-span-5">
+                <FailureDonutChart />
+              </div>
+            </div>
+          </div>
 
-      {/* 4. Safety & Guardrail Protection + Baseline Comparison + Change Detection */}
+          {/* Right Context Stack (3 Columns) */}
+          <div className="lg:col-span-3">
+            <ExecutiveRightStack
+              datasetSize={evaluation.datasetSize}
+              unsafeActionsPrevented={evaluation.safetySummary.unsafeActionsPrevented}
+            />
+          </div>
+        </div>
+
+        {/* Lower Block: 3 Equal Columns (Strategies + Trend + Recent Actions) */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          <div>
+            <RecoveryStrategiesCard />
+          </div>
+          <div>
+            <RecoveryTrendChart />
+          </div>
+          <div>
+            <RecentRecoveryTable />
+          </div>
+        </div>
+
+        {/* Trust & Capability Ribbon + Console Footer */}
+        <TrustRibbon />
+      </div>
+
+      {/* ========================================================================= */}
+      {/* 3. DETAILED INTERACTIVE SECTIONS (PRESERVING DEEP-DIVE CAPABILITIES)       */}
+      {/* ========================================================================= */}
+
+      {/* Section 4: Policy Guardrails, Safety Enforcement & Baseline Comparison */}
       <section id="guardrails" className="scroll-mt-20 space-y-8">
         <SafetySection metrics={evaluation.safetySummary} />
         <BaselineComparison comparison={evaluation.baselineComparison} />
         <PaymentChangeDetection />
       </section>
 
-      {/* 5. Razorpay Actions - Strategy Breakdown, Problem Taxonomy & Activity Feed */}
+      {/* Section 5: AI Diagnosis & Detailed Problem Taxonomy */}
+      <section id="ai-diagnosis" className="scroll-mt-20 space-y-8">
+        <DecisionsSummary metrics={evaluation.decisionSummary} />
+        <CategoryBreakdown breakdown={evaluation.riskCategoryBreakdown} />
+      </section>
+
+      {/* Section 6: Razorpay Actions, Strategy Breakdown & Full Activity Ledger */}
       <section id="razorpay-actions" className="scroll-mt-20 space-y-8">
         <StrategyBreakdown breakdown={evaluation.strategyBreakdown} />
-        <CategoryBreakdown breakdown={evaluation.riskCategoryBreakdown} />
         <RecentRecoveryActivity cases={evaluation.cases} />
       </section>
 
-      {/* 6. Traceability & Cryptographic Audit Chain */}
+      {/* Section 7: Auditability & Cryptographic Audit Trail */}
       <section id="audit-trail" className="scroll-mt-20">
         <AuditabilityChain />
       </section>
 
-      {/* 7. Configuration & Technical Details */}
+      {/* Section 8: Configuration & Developer Test Console */}
       <section id="config" className="scroll-mt-20 space-y-8">
         <TechnicalDetailsDrawer evaluation={evaluation} />
 
-        {/* Developer / Test Console (Secondary & Preserved) */}
-        <Card className="border-dashed border-slate-300 bg-slate-50/40 dark:border-slate-800 dark:bg-slate-950/20">
+        {/* Developer / Test Console (Collapsible) */}
+        <Card className="rounded-2xl border border-dashed border-[#1c2438] bg-[#090d16]/70 shadow-lg">
           <CardHeader
-            className="cursor-pointer py-4"
+            className="cursor-pointer rounded-2xl py-4 transition-colors hover:bg-[#0c1220]"
             onClick={() => setShowDevConsole(!showDevConsole)}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
-                  <Terminal className="h-4 w-4" />
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#1c2438] bg-[#111726] text-slate-300 shadow-inner">
+                  <Terminal className="h-4.5 w-4.5" />
                 </div>
                 <div>
-                  <CardTitle className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                  <CardTitle className="font-mono text-sm font-bold text-white">
                     Developer / Interactive Test Console
                   </CardTitle>
-                  <CardDescription className="text-xs text-slate-500">
+                  <CardDescription className="text-xs text-slate-400">
                     Interactive single-event AI recommendation & policy guardrail tester
                   </CardDescription>
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
-                <Badge variant="outline" className="font-mono text-[10px] text-slate-500">
+                <Badge
+                  variant="outline"
+                  className="border border-[#1c2438] bg-[#0c1019] font-mono text-[10px] text-slate-400"
+                >
                   Dev Tools
                 </Badge>
-                <button className="flex h-7 w-7 items-center justify-center rounded-md border border-slate-200 text-slate-500 dark:border-slate-800">
+                <button className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#1c2438] bg-[#0c1019] text-slate-400 hover:text-white">
                   {showDevConsole ? (
                     <ChevronUp className="h-4 w-4" />
                   ) : (
@@ -185,7 +244,7 @@ export function DashboardClient({ initialEvaluation }: DashboardClientProps) {
           </CardHeader>
 
           {showDevConsole && (
-            <CardContent className="border-t border-slate-200/60 pt-4 dark:border-slate-800">
+            <CardContent className="border-t border-[#1c2438] p-6 pt-4">
               <AIRecommendationTester />
             </CardContent>
           )}

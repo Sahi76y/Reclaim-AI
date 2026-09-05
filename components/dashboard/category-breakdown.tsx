@@ -72,18 +72,23 @@ export function CategoryBreakdown({ breakdown }: CategoryBreakdownProps) {
   ];
 
   return (
-    <Card className="border-slate-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900">
+    <Card className="rounded-2xl border border-[#1c2438] bg-[#0c1019]/90 shadow-xl backdrop-blur-sm">
       <CardHeader className="p-6 pb-4">
-        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <CardTitle className="text-lg font-bold text-slate-900 dark:text-slate-50">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                Failure Taxonomy
+              </span>
+            </div>
+            <CardTitle className="mt-1 font-mono text-xl font-bold tracking-tight text-white">
               Payment Problem Breakdown
             </CardTitle>
-            <CardDescription className="text-xs text-slate-500 sm:text-sm dark:text-slate-400">
+            <CardDescription className="text-xs text-slate-400 sm:text-sm">
               How ReclaimAI classified the 1,000 payment problems
             </CardDescription>
           </div>
-          <span className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+          <span className="self-start rounded-lg border border-[#1c2438] bg-[#090d16] px-3 py-1 font-mono text-xs font-semibold text-slate-300 sm:self-auto">
             6 Problem Categories
           </span>
         </div>
@@ -99,55 +104,51 @@ export function CategoryBreakdown({ breakdown }: CategoryBreakdownProps) {
             return (
               <div
                 key={cat}
-                className="dark:hover:bg-slate-850 flex flex-col justify-between rounded-xl border border-slate-200 bg-slate-50/50 p-4 transition-all hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950/40"
+                className="flex flex-col justify-between rounded-xl border border-[#1c2438] bg-[#090d16] p-4.5 transition-all duration-200 hover:border-[#283857] hover:bg-[#0c1220]"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-white text-slate-700 shadow-2xs dark:bg-slate-800 dark:text-slate-200">
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#1c2438] bg-[#111726] text-slate-200 shadow-inner">
                         <Icon className="h-4 w-4" />
                       </div>
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100">
-                        {meta.humanLabel}
-                      </span>
+                      <span className="text-xs font-semibold text-white">{meta.humanLabel}</span>
                     </div>
-                    <span className="font-mono text-xs font-semibold text-slate-500">
+                    <span className="font-mono text-xs font-bold text-slate-400">
                       {item.caseCount} cases
                     </span>
                   </div>
 
-                  <p className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+                  <p className="mt-2.5 text-[11px] leading-relaxed text-slate-400">
                     {meta.description}
                   </p>
                 </div>
 
-                <div className="mt-4 border-t border-slate-200/80 pt-3 dark:border-slate-800">
+                <div className="mt-4 border-t border-[#1c2438] pt-3">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-500 dark:text-slate-400">Money at Risk:</span>
-                    <span className="font-mono font-medium text-slate-700 dark:text-slate-300">
+                    <span className="text-slate-400">Money at Risk:</span>
+                    <span className="font-mono font-medium text-slate-300">
                       {formatFullINR(item.amountAtRiskINR)}
                     </span>
                   </div>
 
-                  <div className="mt-1 flex items-center justify-between text-xs">
-                    <span className="font-semibold text-emerald-700 dark:text-emerald-400">
-                      Recovered:
-                    </span>
-                    <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">
+                  <div className="mt-1.5 flex items-center justify-between text-xs">
+                    <span className="font-semibold text-emerald-400">Recovered:</span>
+                    <span className="font-mono font-bold text-emerald-400 drop-shadow-[0_0_6px_rgba(16,185,129,0.3)]">
                       {formatFullINR(item.recoveredAmountINR)}
                     </span>
                   </div>
 
-                  <div className="mt-2 flex items-center justify-between text-[11px]">
-                    <span className="text-slate-400">Rate:</span>
-                    <div className="flex items-center gap-1.5">
-                      <div className="h-1.5 w-12 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+                  <div className="mt-2.5 flex items-center justify-between text-[11px]">
+                    <span className="text-slate-500">Rate:</span>
+                    <div className="flex items-center gap-2">
+                      <div className="h-1.5 w-16 overflow-hidden rounded-full bg-[#131b2e]">
                         <div
                           className={`h-full rounded-full ${meta.accentColor}`}
                           style={{ width: `${Math.min(item.recoveryRate, 100)}%` }}
                         />
                       </div>
-                      <span className="font-mono font-bold text-slate-800 dark:text-slate-200">
+                      <span className="font-mono font-bold text-white">
                         {item.recoveryRate.toFixed(1)}%
                       </span>
                     </div>

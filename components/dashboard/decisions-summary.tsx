@@ -15,8 +15,10 @@ export function DecisionsSummary({ metrics }: DecisionsSummaryProps) {
       desc: "Full evaluation dataset analyzed.",
       icon: FileText,
       badge: "100% Ingested",
-      color: "text-slate-900 dark:text-slate-100",
-      bg: "bg-slate-50 border-slate-200 dark:bg-slate-800/40 dark:border-slate-800",
+      color: "text-white",
+      badgeClass: "border border-slate-700 bg-slate-800 text-slate-300",
+      border: "border-[#1c2438] hover:border-slate-700",
+      glow: "rgba(255,255,255,0.03)",
     },
     {
       label: "Recovery Opportunities",
@@ -24,8 +26,10 @@ export function DecisionsSummary({ metrics }: DecisionsSummaryProps) {
       desc: "AI found potential recovery paths.",
       icon: Sparkles,
       badge: "80.5% Evaluated",
-      color: "text-blue-700 dark:text-blue-400",
-      bg: "bg-blue-50/60 border-blue-200 dark:bg-blue-950/30 dark:border-blue-900/60",
+      color: "text-cyan-400",
+      badgeClass: "border border-cyan-500/30 bg-cyan-500/10 text-cyan-300",
+      border: "border-cyan-500/30 hover:border-cyan-500/60",
+      glow: "rgba(6,182,212,0.08)",
     },
     {
       label: "Automatically Handled Safely",
@@ -33,8 +37,10 @@ export function DecisionsSummary({ metrics }: DecisionsSummaryProps) {
       desc: "Cleared all safety rules for execution.",
       icon: CheckCircle2,
       badge: "Approved",
-      color: "text-emerald-700 dark:text-emerald-400",
-      bg: "bg-emerald-50/60 border-emerald-200 dark:bg-emerald-950/30 dark:border-emerald-900/60",
+      color: "text-emerald-400",
+      badgeClass: "border border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
+      border: "border-emerald-500/40 hover:border-emerald-500/70",
+      glow: "rgba(16,185,129,0.12)",
     },
     {
       label: "Adjusted by Safety Rules",
@@ -42,8 +48,10 @@ export function DecisionsSummary({ metrics }: DecisionsSummaryProps) {
       desc: "Actions adjusted (e.g. retry -> payment link).",
       icon: Sliders,
       badge: "Modified",
-      color: "text-amber-700 dark:text-amber-400",
-      bg: "bg-amber-50/60 border-amber-200 dark:bg-amber-950/30 dark:border-amber-900/60",
+      color: "text-amber-400",
+      badgeClass: "border border-amber-500/30 bg-amber-500/10 text-amber-300",
+      border: "border-amber-500/30 hover:border-amber-500/60",
+      glow: "rgba(245,158,11,0.08)",
     },
     {
       label: "Sent to Human Help",
@@ -51,8 +59,10 @@ export function DecisionsSummary({ metrics }: DecisionsSummaryProps) {
       desc: "High-value payments & retry limits escalated.",
       icon: Users,
       badge: "Escalated",
-      color: "text-purple-700 dark:text-purple-400",
-      bg: "bg-purple-50/60 border-purple-200 dark:bg-purple-950/30 dark:border-purple-900/60",
+      color: "text-purple-400",
+      badgeClass: "border border-purple-500/30 bg-purple-500/10 text-purple-300",
+      border: "border-purple-500/30 hover:border-purple-500/60",
+      glow: "rgba(168,85,247,0.08)",
     },
     {
       label: "Stopped Completely",
@@ -60,23 +70,30 @@ export function DecisionsSummary({ metrics }: DecisionsSummaryProps) {
       desc: "Permanently invalid cards blocked safely.",
       icon: Ban,
       badge: "Blocked",
-      color: "text-rose-700 dark:text-rose-400",
-      bg: "bg-rose-50/60 border-rose-200 dark:bg-rose-950/30 dark:border-rose-900/60",
+      color: "text-rose-400",
+      badgeClass: "border border-rose-500/30 bg-rose-500/10 text-rose-300",
+      border: "border-rose-500/30 hover:border-rose-500/60",
+      glow: "rgba(244,63,94,0.08)",
     },
   ];
 
   return (
-    <Card className="border-slate-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900">
+    <Card className="rounded-2xl border border-[#1c2438] bg-[#0c1019]/90 shadow-xl backdrop-blur-sm">
       <CardHeader className="p-6 pb-3">
         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <CardTitle className="text-lg font-bold text-slate-900 dark:text-slate-50">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                Decision Pipeline
+              </span>
+            </div>
+            <CardTitle className="mt-1 font-mono text-xl font-bold tracking-tight text-white">
               What ReclaimAI Did
             </CardTitle>
-            <CardDescription className="text-xs text-slate-500 sm:text-sm dark:text-slate-400">
+            <CardDescription className="text-xs text-slate-400 sm:text-sm">
               Clear breakdown of every decision made across the 1,000 payment failures
             </CardDescription>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-xs text-slate-400">
               Decision-stage counts across the 1,000 reviewed payments. Some cases can appear in
               more than one stage.
             </p>
@@ -85,31 +102,32 @@ export function DecisionsSummary({ metrics }: DecisionsSummaryProps) {
       </CardHeader>
 
       <CardContent className="p-6 pt-2">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((c) => {
             const Icon = c.icon;
             return (
               <div
                 key={c.label}
-                className={`flex flex-col justify-between rounded-xl border p-4 transition-all ${c.bg}`}
+                className={`flex flex-col justify-between rounded-xl border bg-[#090d16] p-4.5 transition-all duration-200 ${c.border}`}
+                style={{ boxShadow: `0 0 15px ${c.glow}` }}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">
-                    {c.label}
-                  </span>
-                  <span className="rounded-sm bg-white/80 px-2 py-0.5 text-[10px] font-bold text-slate-700 shadow-xs dark:bg-slate-900/80 dark:text-slate-300">
+                  <span className="text-xs font-semibold text-slate-300">{c.label}</span>
+                  <span
+                    className={`rounded-md px-2 py-0.5 font-mono text-[10px] font-bold ${c.badgeClass}`}
+                  >
                     {c.badge}
                   </span>
                 </div>
 
-                <div className="my-3 flex items-baseline gap-2">
+                <div className="my-3 flex items-baseline gap-2.5">
                   <Icon className={`h-5 w-5 shrink-0 ${c.color}`} />
-                  <span className={`font-mono text-3xl font-extrabold tracking-tight ${c.color}`}>
+                  <span className={`font-mono text-3xl font-black tracking-tight ${c.color}`}>
                     {c.value}
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-500 dark:text-slate-400">{c.desc}</p>
+                <p className="text-xs text-slate-400">{c.desc}</p>
               </div>
             );
           })}

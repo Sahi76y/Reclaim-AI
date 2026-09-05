@@ -1,19 +1,75 @@
 [
   {
-    "id": "dec_test_001",
     "riskEventId": "evt_syn_000001",
+    "recommendationId": "evt_syn_000001",
     "decision": "ALLOW",
     "originalAction": "SMART_RETRY",
     "approvedAction": "SMART_RETRY",
     "reasons": [
-      "Test approval for smart retry"
+      "All policy safety guardrails passed. Approved for automated execution."
     ],
-    "ruleResults": [],
-    "shouldStopAutomation": false,
-    "evaluatedAt": "2026-09-05T01:39:20.920Z",
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (TEMPORARY_PAYMENT_FAILURE) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹8,005.43) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (93%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (MEDIUM) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (SMART_RETRY) is operationally sound for payment method UPI."
+      }
+    ],
     "policyVersion": "1.0.0",
     "requiresHumanReview": false,
-    "requiresCustomerAction": false
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": false,
+    "evaluatedAt": "2026-09-05T14:55:38.683Z",
+    "id": "dec_1788620138684_shdvo96"
   },
   {
     "riskEventId": "evt_syn_000002",

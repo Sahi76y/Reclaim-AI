@@ -7,19 +7,15 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "border-transparent bg-slate-900 text-slate-50 shadow-xs dark:bg-slate-100 dark:text-slate-900",
-        secondary:
-          "border-transparent bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-slate-100",
-        outline: "text-slate-950 border-slate-300 dark:text-slate-200 dark:border-slate-700",
-        success:
-          "border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300",
-        warning:
-          "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-300",
-        danger:
-          "border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/40 dark:text-rose-300",
-        guardrail:
-          "border-blue-200 bg-blue-50 text-blue-800 dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300",
+        default: "border-slate-700/80 bg-slate-800 text-slate-100 shadow-xs",
+        secondary: "border-slate-800 bg-slate-800/80 text-slate-300",
+        outline: "text-slate-300 border-slate-700/80 bg-transparent",
+        success: "border-emerald-500/30 bg-emerald-500/10 text-emerald-400 font-mono",
+        warning: "border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono",
+        danger: "border-rose-500/40 bg-rose-500/15 text-rose-300 font-mono",
+        guardrail: "border-cyan-500/30 bg-cyan-500/10 text-cyan-300 font-mono",
+        brand:
+          "border-rose-500/40 bg-rose-500/10 text-rose-300 font-mono shadow-xs shadow-rose-950/40",
       },
     },
     defaultVariants: {

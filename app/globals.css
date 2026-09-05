@@ -1,53 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #0f172a;
-  --primary-foreground: #f8fafc;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #1e293b;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #f1f5f9;
-  --accent-foreground: #0f172a;
+  --background: #07090e;
+  --foreground: #f1f5f9;
+  --card: #0c1019;
+  --card-foreground: #f1f5f9;
+  --popover: #0c1019;
+  --popover-foreground: #f1f5f9;
+  --primary: #ef4444;
+  --primary-foreground: #ffffff;
+  --secondary: #121826;
+  --secondary-foreground: #e2e8f0;
+  --muted: #121826;
+  --muted-foreground: #94a3b8;
+  --accent: #161e30;
+  --accent-foreground: #f8fafc;
   --destructive: #ef4444;
-  --destructive-foreground: #f8fafc;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #0f172a;
+  --destructive-foreground: #ffffff;
+  --border: #1c2438;
+  --input: #1c2438;
+  --ring: #ef4444;
   --success: #10b981;
   --warning: #f59e0b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #090d16;
-    --foreground: #f8fafc;
-    --card: #0f172a;
-    --card-foreground: #f8fafc;
-    --popover: #0f172a;
-    --popover-foreground: #f8fafc;
-    --primary: #f8fafc;
-    --primary-foreground: #0f172a;
-    --secondary: #1e293b;
-    --secondary-foreground: #f8fafc;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
-    --accent: #1e293b;
-    --accent-foreground: #f8fafc;
-    --destructive: #7f1d1d;
-    --destructive-foreground: #f8fafc;
-    --border: #1e293b;
-    --input: #1e293b;
-    --ring: #cbd5e1;
-    --success: #059669;
-    --warning: #d97706;
-  }
+.dark {
+  --background: #07090e;
+  --foreground: #f1f5f9;
+  --card: #0c1019;
+  --card-foreground: #f1f5f9;
+  --popover: #0c1019;
+  --popover-foreground: #f1f5f9;
+  --primary: #ef4444;
+  --primary-foreground: #ffffff;
+  --secondary: #121826;
+  --secondary-foreground: #e2e8f0;
+  --muted: #121826;
+  --muted-foreground: #94a3b8;
+  --accent: #161e30;
+  --accent-foreground: #f8fafc;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #1c2438;
+  --input: #1c2438;
+  --ring: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -55,4 +58,39 @@ body {
   color: var(--foreground);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle dark technical background grid pattern */
+.tech-grid-bg {
+  background-color: #07090e;
+  background-image:
+    linear-gradient(to right, rgba(28, 36, 56, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 36, 56, 0.25) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Subtle ambient radial highlights */
+.ambient-glow-top {
+  background: radial-gradient(
+    ellipse 60% 40% at 50% 0%,
+    rgba(239, 68, 68, 0.07) 0%,
+    rgba(6, 182, 212, 0.03) 50%,
+    transparent 80%
+  );
+}
+
+/* Custom sleek scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c2438;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2e3c5d;
 }

@@ -8,15 +8,18 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <div className="flex min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="tech-grid-bg relative flex min-h-screen bg-[#07090e] text-slate-100">
+      {/* Ambient glow in background */}
+      <div className="ambient-glow-top pointer-events-none fixed inset-0 z-0" />
+
       {/* Fixed Sidebar */}
       <Sidebar />
 
       {/* Main Layout Container */}
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="relative z-10 flex flex-1 flex-col overflow-hidden">
         <Header />
-        <main className="flex-1 overflow-y-auto p-6 md:p-8">
-          <div className="mx-auto max-w-6xl">{children}</div>
+        <main className="flex-1 overflow-y-auto p-5 md:p-7">
+          <div className="mx-auto max-w-7xl">{children}</div>
         </main>
       </div>
     </div>

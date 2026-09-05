@@ -238,18 +238,18 @@ export function AuditabilityChain() {
     SAMPLE_AUDIT_CHAINS.find((c) => c.id === selectedCaseId) ?? SAMPLE_AUDIT_CHAINS[0];
 
   return (
-    <Card className="border-slate-200 shadow-sm dark:border-slate-800">
-      <CardHeader className="pb-4">
+    <Card className="rounded-2xl border border-[#1c2438] bg-[#0c1019]/90 shadow-xl backdrop-blur-sm">
+      <CardHeader className="p-6 pb-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-400 shadow-[0_0_12px_rgba(168,85,247,0.25)]">
               <FileCheck2 className="h-5 w-5" />
             </div>
             <div>
-              <CardTitle className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                Every Decision is Traceable
+              <CardTitle className="font-mono text-xl font-bold tracking-tight text-white">
+                Every Decision Is Traceable
               </CardTitle>
-              <CardDescription className="text-xs text-slate-500">
+              <CardDescription className="text-xs text-slate-400">
                 End-to-end cryptographic audit trail from payment failure to verified resolution
               </CardDescription>
             </div>
@@ -257,53 +257,55 @@ export function AuditabilityChain() {
 
           <Badge
             variant="outline"
-            className="gap-1 font-mono text-[11px] text-slate-600 dark:text-slate-300"
+            className="gap-1.5 border border-emerald-500/30 bg-emerald-500/10 font-mono text-[11px] text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.15)]"
           >
-            <Lock className="h-3 w-3 text-emerald-600" />
+            <Lock className="h-3 w-3 text-emerald-400" />
             <span>Immutable Tamper-Evident Trail</span>
           </Badge>
         </div>
 
         {/* Core Philosophy Banner */}
-        <div className="mt-3 rounded-xl border border-blue-200/80 bg-gradient-to-r from-blue-50/80 via-indigo-50/60 to-purple-50/50 p-4 dark:border-blue-900/40 dark:from-blue-950/30 dark:via-indigo-950/20 dark:to-purple-950/10">
+        <div className="mt-4 rounded-xl border border-purple-500/30 bg-gradient-to-r from-purple-950/25 via-[#0d1424] to-[#0c1019] p-4.5 shadow-[0_0_20px_rgba(168,85,247,0.06)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="space-y-1">
-              <p className="text-xs font-bold tracking-wider text-blue-700 uppercase dark:text-blue-400">
+              <p className="font-mono text-[10px] font-bold tracking-widest text-purple-400 uppercase">
                 Architectural Invariant
               </p>
-              <h3 className="text-base font-bold text-slate-900 sm:text-lg dark:text-slate-100">
+              <h3 className="font-mono text-base font-bold text-white sm:text-lg">
                 &ldquo;AI recommends. Policy authorizes. Executor acts.&rdquo;
               </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-300">
+              <p className="text-xs text-slate-300">
                 The AI advisor possesses zero direct payment execution authority. Only deterministic
                 policy rules authorize actions, executed exclusively in Razorpay test mode.
               </p>
             </div>
 
-            <div className="flex items-center gap-1.5 rounded-lg bg-white/80 px-3 py-2 font-mono text-xs font-medium shadow-xs dark:bg-slate-900/80">
-              <span className="text-blue-600">AI</span>
-              <ArrowRight className="h-3 w-3 text-slate-400" />
-              <span className="text-emerald-600">Policy</span>
-              <ArrowRight className="h-3 w-3 text-slate-400" />
-              <span className="text-amber-600">Razorpay Test</span>
+            <div className="flex items-center gap-2 rounded-xl border border-[#1c2438] bg-[#090d16] px-3.5 py-2 font-mono text-xs font-semibold shadow-inner">
+              <span className="text-cyan-400">AI</span>
+              <ArrowRight className="h-3 w-3 text-slate-500" />
+              <span className="text-emerald-400">Policy</span>
+              <ArrowRight className="h-3 w-3 text-slate-500" />
+              <span className="text-amber-400">Razorpay Test</span>
             </div>
           </div>
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-5">
+      <CardContent className="space-y-5 p-6 pt-0">
         {/* Sample Selector */}
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3 dark:border-slate-800">
-          <span className="text-xs font-medium text-slate-500">Inspect Sample Audit Trace:</span>
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1c2438] pb-3.5">
+          <span className="font-mono text-xs font-medium text-slate-400">
+            Inspect Sample Audit Trace:
+          </span>
           <div className="flex flex-wrap gap-1.5">
             {SAMPLE_AUDIT_CHAINS.map((item) => (
               <button
                 key={item.id}
                 onClick={() => setSelectedCaseId(item.id)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                className={`rounded-xl px-3 py-1.5 font-mono text-xs font-semibold transition-all duration-150 ${
                   item.id === selectedCaseId
-                    ? "bg-slate-900 text-white shadow-xs dark:bg-slate-100 dark:text-slate-900"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
+                    ? "border border-purple-500/50 bg-[#141b2c] text-white shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+                    : "border border-[#1c2438] bg-[#090d16] text-slate-400 hover:border-slate-700 hover:text-slate-200"
                 }`}
               >
                 {item.label} ({item.amount})
@@ -313,15 +315,16 @@ export function AuditabilityChain() {
         </div>
 
         {/* Selected Case Summary */}
-        <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-slate-50 px-3.5 py-2.5 text-xs dark:bg-slate-900">
+        <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[#1c2438] bg-[#090d16] px-4 py-2.5 text-xs">
           <div className="flex items-center gap-2">
-            <span className="font-mono font-bold text-slate-900 dark:text-slate-100">
-              {currentCase.paymentId}
-            </span>
-            <span className="text-slate-300 dark:text-slate-700">|</span>
-            <span className="text-slate-600 dark:text-slate-400">{currentCase.summary}</span>
+            <span className="font-mono font-bold text-white">{currentCase.paymentId}</span>
+            <span className="text-slate-600">|</span>
+            <span className="text-slate-300">{currentCase.summary}</span>
           </div>
-          <Badge variant="secondary" className="font-mono text-[10px]">
+          <Badge
+            variant="secondary"
+            className="border border-slate-700 bg-slate-800 font-mono text-[10px] text-slate-300"
+          >
             Amount: {currentCase.amount}
           </Badge>
         </div>
@@ -331,45 +334,41 @@ export function AuditabilityChain() {
           {currentCase.steps.map((step, idx) => (
             <div
               key={step.stageName}
-              className="relative flex flex-col rounded-xl border border-slate-200 bg-white p-3.5 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+              className="relative flex flex-col justify-between rounded-xl border border-[#1c2438] bg-[#090d16] p-4 transition-all duration-200 hover:border-purple-500/40 hover:bg-[#0c1220]"
             >
-              {/* Header */}
-              <div className="mb-2 flex items-center justify-between">
-                <span className="font-mono text-[10px] font-bold tracking-wider text-slate-400 uppercase">
-                  {step.stageName}
-                </span>
-                <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">
-                  {step.badge}
-                </span>
+              <div>
+                {/* Header */}
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="font-mono text-[10px] font-bold tracking-wider text-slate-400 uppercase">
+                    {step.stageName}
+                  </span>
+                  <span className="rounded-md border border-[#1c2438] bg-[#111726] px-1.5 py-0.5 font-mono text-[9px] font-semibold text-cyan-300">
+                    {step.badge}
+                  </span>
+                </div>
+
+                {/* Title & Description */}
+                <h4 className="font-mono text-xs font-bold text-white">{step.title}</h4>
+                <p className="mt-1 text-[11px] leading-relaxed text-slate-400">{step.desc}</p>
               </div>
 
-              {/* Title & Description */}
-              <h4 className="text-xs font-semibold text-slate-900 dark:text-slate-100">
-                {step.title}
-              </h4>
-              <p className="mt-1 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">
-                {step.desc}
-              </p>
-
               {/* Details table */}
-              <div className="mt-3 border-t border-slate-100 pt-2 text-[10px] dark:border-slate-800">
+              <div className="mt-3 border-t border-[#1c2438] pt-2.5 text-[10px]">
                 <dl className="space-y-1">
                   {Object.entries(step.details).map(([k, v]) => (
                     <div key={k} className="flex items-center justify-between">
-                      <dt className="text-slate-400">{k}:</dt>
-                      <dd className="font-mono font-medium text-slate-700 dark:text-slate-300">
-                        {v}
-                      </dd>
+                      <dt className="text-slate-500">{k}:</dt>
+                      <dd className="font-mono font-semibold text-slate-300">{v}</dd>
                     </div>
                   ))}
                 </dl>
               </div>
 
               {/* Step indicator footer */}
-              <div className="mt-auto pt-3">
-                <div className="flex items-center justify-between text-[10px] text-slate-400">
+              <div className="mt-3 border-t border-[#1c2438]/60 pt-2">
+                <div className="flex items-center justify-between font-mono text-[10px] text-slate-400">
                   <span>Step {idx + 1} of 5</span>
-                  <CheckCircle2 className="h-3 w-3 text-emerald-500" />
+                  <CheckCircle2 className="h-3 w-3 text-emerald-400 drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]" />
                 </div>
               </div>
             </div>
