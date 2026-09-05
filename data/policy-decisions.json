@@ -1,0 +1,847 @@
+[
+  {
+    "id": "dec_test_001",
+    "riskEventId": "evt_syn_000001",
+    "decision": "ALLOW",
+    "originalAction": "SMART_RETRY",
+    "approvedAction": "SMART_RETRY",
+    "reasons": [
+      "Test approval for smart retry"
+    ],
+    "ruleResults": [],
+    "shouldStopAutomation": false,
+    "evaluatedAt": "2026-09-05T01:39:20.920Z",
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": false,
+    "requiresCustomerAction": false
+  },
+  {
+    "riskEventId": "evt_syn_000002",
+    "recommendationId": "evt_syn_000002",
+    "decision": "ALLOW",
+    "originalAction": "SMART_RETRY",
+    "approvedAction": "SMART_RETRY",
+    "reasons": [
+      "All policy safety guardrails passed. Approved for automated execution."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (TEMPORARY_PAYMENT_FAILURE) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹8,005.37) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (93%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (MEDIUM) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (SMART_RETRY) is operationally sound for payment method UPI."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": false,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": false,
+    "evaluatedAt": "2026-09-05T01:28:16.661Z",
+    "id": "dec_1788571696662_tws5uv8"
+  },
+  {
+    "riskEventId": "evt_syn_000004",
+    "recommendationId": "evt_syn_000004",
+    "decision": "ESCALATE",
+    "originalAction": "SMART_RETRY",
+    "approvedAction": "ESCALATE_HUMAN",
+    "reasons": [
+      "AI confidence is moderate (76%). Conservative policy requires customer payment link instead of repeated autonomous retry.",
+      "Customer is flagged as CHURN_RISK with repeated failures. Automated recovery is paused to allow high-touch merchant concierge follow-up."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (TEMPORARY_PAYMENT_FAILURE) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹2,346) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (2) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (1) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": false,
+        "reason": "AI confidence is moderate (76%). Conservative policy requires customer payment link instead of repeated autonomous retry.",
+        "suggestedAction": "DYNAMIC_PAYMENT_LINK",
+        "suggestedDecision": "MODIFY"
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": false,
+        "reason": "Customer is flagged as CHURN_RISK with repeated failures. Automated recovery is paused to allow high-touch merchant concierge follow-up.",
+        "suggestedAction": "ESCALATE_HUMAN",
+        "suggestedDecision": "ESCALATE",
+        "requiresHumanReview": true
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (LOW) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (SMART_RETRY) is operationally sound for payment method UPI."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": true,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": true,
+    "evaluatedAt": "2026-09-04T22:01:15.827Z",
+    "id": "dec_1788559275827_i17ctb7"
+  },
+  {
+    "riskEventId": "evt_syn_000006",
+    "recommendationId": "evt_syn_000006",
+    "decision": "ALLOW",
+    "originalAction": "DYNAMIC_PAYMENT_LINK",
+    "approvedAction": "DYNAMIC_PAYMENT_LINK",
+    "reasons": [
+      "All policy safety guardrails passed. Approved for automated execution."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (CUSTOMER_ACTION_REQUIRED) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹5,155) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (2) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (1) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (89%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (LOW) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (DYNAMIC_PAYMENT_LINK) is operationally sound for payment method UPI."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": false,
+    "requiresCustomerAction": true,
+    "shouldStopAutomation": false,
+    "evaluatedAt": "2026-09-04T21:59:17.372Z",
+    "id": "dec_1788559157372_mbb14q2"
+  },
+  {
+    "riskEventId": "evt_syn_000020",
+    "recommendationId": "evt_syn_000020",
+    "decision": "ALLOW",
+    "originalAction": "SMART_RETRY",
+    "approvedAction": "SMART_RETRY",
+    "reasons": [
+      "All policy safety guardrails passed. Approved for automated execution."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (TEMPORARY_PAYMENT_FAILURE) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹8,164) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (93%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (HIGH) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (SMART_RETRY) is operationally sound for payment method UPI."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": false,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": false,
+    "evaluatedAt": "2026-09-04T22:01:15.812Z",
+    "id": "dec_1788559275813_d8nvqlz"
+  },
+  {
+    "riskEventId": "evt_syn_000005",
+    "recommendationId": "evt_syn_000005",
+    "decision": "ESCALATE",
+    "originalAction": "DYNAMIC_PAYMENT_LINK",
+    "approvedAction": "ESCALATE_HUMAN",
+    "reasons": [
+      "Transaction amount (₹49,490) exceeds the automated recovery limit of ₹25,000. Human review is required to prevent unauthorized financial risk."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (CUSTOMER_ACTION_REQUIRED) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": false,
+        "reason": "Transaction amount (₹49,490) exceeds the automated recovery limit of ₹25,000. Human review is required to prevent unauthorized financial risk.",
+        "suggestedAction": "ESCALATE_HUMAN",
+        "suggestedDecision": "ESCALATE",
+        "requiresHumanReview": true
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (89%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (CHURN_RISK) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (HIGH) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (DYNAMIC_PAYMENT_LINK) is operationally sound for payment method UPI."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": true,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": true,
+    "evaluatedAt": "2026-09-04T22:01:15.843Z",
+    "id": "dec_1788559275843_pml6ukb"
+  },
+  {
+    "riskEventId": "evt_syn_000016",
+    "recommendationId": "evt_syn_000016",
+    "decision": "BLOCK",
+    "originalAction": "NONE",
+    "approvedAction": "NONE",
+    "reasons": [
+      "Automated recovery is not permitted for this event.",
+      "Failure is classified as non-recoverable (e.g. permanently blocked, stolen card, or fraudulent attempt). Automated recovery is stopped.",
+      "Incident severity is CRITICAL. Autonomous execution is prohibited without human supervisor sign-off."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": false,
+        "reason": "Automated recovery is not permitted for this event.",
+        "suggestedAction": "NONE",
+        "suggestedDecision": "BLOCK",
+        "shouldStopAutomation": true
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": false,
+        "reason": "Failure is classified as non-recoverable (e.g. permanently blocked, stolen card, or fraudulent attempt). Automated recovery is stopped.",
+        "suggestedAction": "NONE",
+        "suggestedDecision": "BLOCK",
+        "shouldStopAutomation": true
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹13,235) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (96%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": false,
+        "reason": "Incident severity is CRITICAL. Autonomous execution is prohibited without human supervisor sign-off.",
+        "suggestedAction": "ESCALATE_HUMAN",
+        "suggestedDecision": "ESCALATE",
+        "requiresHumanReview": true
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (NONE) is operationally sound for payment method CARD."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": true,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": true,
+    "evaluatedAt": "2026-09-04T22:01:15.855Z",
+    "id": "dec_1788559275855_xm40psb"
+  },
+  {
+    "riskEventId": "evt_edge_retry_limit",
+    "recommendationId": "evt_edge_retry_limit",
+    "decision": "ESCALATE",
+    "originalAction": "SMART_RETRY",
+    "approvedAction": "ESCALATE_HUMAN",
+    "reasons": [
+      "Automatic retry limit reached (3 attempts > max of 2). Further retries are stopped to prevent repeated charges."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (TEMPORARY_PAYMENT_FAILURE) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹2,500) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": false,
+        "reason": "Automatic retry limit reached (3 attempts > max of 2). Further retries are stopped to prevent repeated charges.",
+        "suggestedAction": "ESCALATE_HUMAN",
+        "suggestedDecision": "ESCALATE",
+        "requiresHumanReview": true,
+        "shouldStopAutomation": true
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (1) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (85%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (LOW) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (SMART_RETRY) is operationally sound for payment method UPI."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": true,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": true,
+    "evaluatedAt": "2026-09-05T01:28:16.355Z",
+    "id": "dec_1788571696359_n0htt5y"
+  },
+  {
+    "riskEventId": "evt_edge_high_value",
+    "recommendationId": "evt_edge_high_value",
+    "decision": "ESCALATE",
+    "originalAction": "SMART_RETRY",
+    "approvedAction": "ESCALATE_HUMAN",
+    "reasons": [
+      "Transaction amount (₹45,000) exceeds the automated recovery limit of ₹25,000. Human review is required to prevent unauthorized financial risk."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (TEMPORARY_PAYMENT_FAILURE) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": false,
+        "reason": "Transaction amount (₹45,000) exceeds the automated recovery limit of ₹25,000. Human review is required to prevent unauthorized financial risk.",
+        "suggestedAction": "ESCALATE_HUMAN",
+        "suggestedDecision": "ESCALATE",
+        "requiresHumanReview": true
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (88%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (LOW) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (SMART_RETRY) is operationally sound for payment method CARD."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": true,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": true,
+    "evaluatedAt": "2026-09-05T01:28:16.540Z",
+    "id": "dec_1788571696540_4bryx92"
+  },
+  {
+    "riskEventId": "evt_edge_low_confidence",
+    "recommendationId": "evt_edge_low_confidence",
+    "decision": "ESCALATE",
+    "originalAction": "SMART_RETRY",
+    "approvedAction": "ESCALATE_HUMAN",
+    "reasons": [
+      "The AI is not confident enough for automatic recovery, so this case needs human review."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (TEMPORARY_PAYMENT_FAILURE) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹2,500) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": false,
+        "reason": "The AI is not confident enough for automatic recovery, so this case needs human review.",
+        "suggestedAction": "ESCALATE_HUMAN",
+        "suggestedDecision": "ESCALATE",
+        "requiresHumanReview": true
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (LOW) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (SMART_RETRY) is operationally sound for payment method UPI."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": true,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": true,
+    "evaluatedAt": "2026-09-04T22:09:26.067Z",
+    "id": "dec_1788559766067_vcpbu0n"
+  },
+  {
+    "riskEventId": "evt_edge_non_recoverable",
+    "recommendationId": "evt_edge_non_recoverable",
+    "decision": "BLOCK",
+    "originalAction": "NONE",
+    "approvedAction": "NONE",
+    "reasons": [
+      "Automated recovery is not permitted for this event.",
+      "Failure is classified as non-recoverable (e.g. permanently blocked, stolen card, or fraudulent attempt). Automated recovery is stopped."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": false,
+        "reason": "Automated recovery is not permitted for this event.",
+        "suggestedAction": "NONE",
+        "suggestedDecision": "BLOCK",
+        "shouldStopAutomation": true
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": false,
+        "reason": "Failure is classified as non-recoverable (e.g. permanently blocked, stolen card, or fraudulent attempt). Automated recovery is stopped.",
+        "suggestedAction": "NONE",
+        "suggestedDecision": "BLOCK",
+        "shouldStopAutomation": true
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹2,500) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (95%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (LOW) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (NONE) is operationally sound for payment method CARD."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": false,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": true,
+    "evaluatedAt": "2026-09-05T01:28:16.405Z",
+    "id": "dec_1788571696405_q57mm43"
+  },
+  {
+    "riskEventId": "evt_edge_safe_smart_retry",
+    "recommendationId": "evt_edge_safe_smart_retry",
+    "decision": "ALLOW",
+    "originalAction": "SMART_RETRY",
+    "approvedAction": "SMART_RETRY",
+    "reasons": [
+      "All policy safety guardrails passed. Approved for automated execution."
+    ],
+    "ruleResults": [
+      {
+        "ruleId": "RULE_01_ELIGIBILITY",
+        "ruleName": "Recovery Eligibility Check",
+        "passed": true,
+        "reason": "Event is verified as eligible for automated recovery consideration."
+      },
+      {
+        "ruleId": "RULE_02_NON_RECOVERABLE",
+        "ruleName": "Non-Recoverable Category Gate",
+        "passed": true,
+        "reason": "Failure category (TEMPORARY_PAYMENT_FAILURE) is potentially actionable."
+      },
+      {
+        "ruleId": "RULE_03_MAX_AMOUNT",
+        "ruleName": "Maximum Transaction Amount Limit",
+        "passed": true,
+        "reason": "Transaction amount (₹2,500) is within the automated threshold of ₹25,000."
+      },
+      {
+        "ruleId": "RULE_04_RETRY_LIMIT",
+        "ruleName": "Maximum Automated Retries Limit",
+        "passed": true,
+        "reason": "Current attempt count (1) is within the allowed limit of 2."
+      },
+      {
+        "ruleId": "RULE_05_INTERVENTION_LIMIT",
+        "ruleName": "Recovery Intervention Cap",
+        "passed": true,
+        "reason": "Prior recovery interventions (0) are within the safety cap of 2."
+      },
+      {
+        "ruleId": "RULE_06_CONFIDENCE",
+        "ruleName": "AI Confidence Safety Policy",
+        "passed": true,
+        "reason": "AI confidence (88%) meets normal automation standards."
+      },
+      {
+        "ruleId": "RULE_07_CHURN_RISK",
+        "ruleName": "Customer Risk Tier Safeguard",
+        "passed": true,
+        "reason": "Customer risk tier (REGULAR) is safe for standard recovery policy."
+      },
+      {
+        "ruleId": "RULE_08_CRITICAL_SEVERITY",
+        "ruleName": "Critical Incident Severity Guard",
+        "passed": true,
+        "reason": "Event severity (LOW) is eligible for automated processing."
+      },
+      {
+        "ruleId": "RULE_09_ACTION_FEASIBILITY",
+        "ruleName": "Action Feasibility Verification",
+        "passed": true,
+        "reason": "Recommended action (SMART_RETRY) is operationally sound for payment method UPI."
+      }
+    ],
+    "policyVersion": "1.0.0",
+    "requiresHumanReview": false,
+    "requiresCustomerAction": false,
+    "shouldStopAutomation": false,
+    "evaluatedAt": "2026-09-05T01:28:16.424Z",
+    "id": "dec_1788571696424_bebdtj3"
+  }
+]

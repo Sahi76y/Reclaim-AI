@@ -1,0 +1,269 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RiskSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum RiskCategory {
+  TEMPORARY_PAYMENT_FAILURE
+  INSUFFICIENT_FUNDS
+  CUSTOMER_ACTION_REQUIRED
+  REPEATED_PAYMENT_FAILURE
+  ABANDONED_CHECKOUT
+  NON_RECOVERABLE
+}
+
+enum RecoveryRecommendationType {
+  DUNNING_SMS
+  DUNNING_EMAIL
+  DYNAMIC_PAYMENT_LINK
+  SMART_RETRY
+  CHECKOUT_INCENTIVE
+  MANUAL_ESCALATION
+}
+
+enum PolicySafetyDecision {
+  APPROVED
+  REJECTED
+  REQUIRES_HUMAN_APPROVAL
+  QUARANTINED
+}
+
+enum RecoveryStatus {
+  PENDING_POLICY_CHECK
+  POLICY_APPROVED
+  POLICY_BLOCKED
+  AWAITING_HUMAN_APPROVAL
+  EXECUTING_RAZORPAY
+  RECOVERED
+  FAILED
+  EXPIRED
+}
+
+enum AuditActor {
+  AI_AGENT
+  POLICY_ENGINE
+  HUMAN_OPERATOR
+  RAZORPAY_WEBHOOK
+  RECOVERY_EXECUTOR
+}
+
+model Merchant {
+  id             String        @id @default(uuid())
+  name           String
+  email          String        @unique
+  safetyTier     String        @default("STRICT") // STRICT, BALANCED, AGGRESSIVE
+  maxAutoRecover Int           @default(5000000) // Default 50,000 INR in paise
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  riskEvents     RiskEvent[]
+  policyRules    PolicyRule[]
+  auditLogs      AuditLog[]
+
+  @@map("merchants")
+}
+
+model RiskEvent {
+  id                    String                  @id @default(uuid())
+  merchantId            String
+  merchant              Merchant                @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  category              RiskCategory
+  severity              RiskSeverity
+  amountAtRisk          Int                     // Minor currency units (paise)
+  currency              String                  @default("INR")
+  customerId            String?
+  customerEmail         String?
+  orderId               String?
+  paymentMethod         String                  @default("UPI") // UPI, CARD, NETBANKING, WALLET, EMI
+  failureCode           String?                 // e.g. BAD_REQUEST_GATEWAY_TIMEOUT
+  failureReason         String?                 // descriptive failure message
+  attemptNumber         Int                     @default(1)
+  recoveryAttemptsCount Int                     @default(0)
+  customerTier          String                  @default("REGULAR") // VIP, REGULAR, NEW, CHURN_RISK
+  isSubscription        Boolean                 @default(false)
+  subscriptionPlanId    String?
+  isRecoveryEligible    Boolean                 @default(true)
+  previousSuccessCount  Int                     @default(0)
+  previousFailureCount  Int                     @default(0)
+  metadata              Json?
+  status                RecoveryStatus          @default(PENDING_POLICY_CHECK)
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime                @updatedAt
+
+  recommendation        RecoveryRecommendation?
+  policyDecision        PolicyDecision?
+  recoveryAction        RecoveryAction?
+  recoveryExecutions    RecoveryExecution[]
+  groundTruth           EventGroundTruth?
+
+  @@index([merchantId, status])
+  @@index([category])
+  @@index([createdAt])
+  @@map("risk_events")
+}
+
+model EventGroundTruth {
+  id                            String    @id @default(uuid())
+  riskEventId                   String    @unique
+  riskEvent                     RiskEvent @relation(fields: [riskEventId], references: [id], onDelete: Cascade)
+  isRecoverable                 Boolean
+  recoverableAmount             Int       // in paise
+  expectedRecoveryAction        String    // SMART_RETRY, DYNAMIC_PAYMENT_LINK, CUSTOMER_DUNNING, ESCALATE_HUMAN, NONE
+  simulatedOutcome              String    // RECOVERED_FULL, RECOVERED_PARTIAL, EXPIRED_UNRECOVERED, PERMANENT_FAILURE
+  simulatedRecoveryLatencyHours Int?      // simulated hours to recover
+  evaluationNotes               String?
+  createdAt                     DateTime  @default(now())
+
+  @@map("event_ground_truth")
+}
+
+model RecoveryRecommendation {
+  id               String    @id @default(uuid())
+  riskEventId      String    @unique
+  riskEvent        RiskEvent @relation(fields: [riskEventId], references: [id], onDelete: Cascade)
+  action           String    // SMART_RETRY, CUSTOMER_DUNNING, DYNAMIC_PAYMENT_LINK, ESCALATE_HUMAN, NONE
+  confidenceScore  Float     // 0 to 1
+  reasoning        String    @db.Text
+  diagnosisSummary String    @db.Text
+  likelyCause      String
+  severity         String
+  expectedBenefit  String
+  safetyFlags      Json      // { requiresCustomerAction, requiresHumanReview, shouldStopAutomation }
+  provider         String    @default("mock")
+  model            String    @default("mock-reasoning-v1")
+  createdAt        DateTime  @default(now())
+
+  @@map("recovery_recommendations")
+}
+
+model PolicyDecision {
+  id                     String    @id @default(uuid())
+  riskEventId            String    @unique
+  riskEvent              RiskEvent @relation(fields: [riskEventId], references: [id], onDelete: Cascade)
+  recommendationId       String?
+  decision               String    // ALLOW, MODIFY, ESCALATE, BLOCK
+  originalAction         String    // SMART_RETRY, CUSTOMER_DUNNING, DYNAMIC_PAYMENT_LINK, ESCALATE_HUMAN, NONE
+  approvedAction         String    // SMART_RETRY, CUSTOMER_DUNNING, DYNAMIC_PAYMENT_LINK, ESCALATE_HUMAN, NONE
+  reasons                String[]
+  ruleResults            Json      // [{ ruleId, ruleName, passed, reason }]
+  policyVersion          String    @default("1.0.0")
+  requiresHumanReview    Boolean   @default(false)
+  requiresCustomerAction Boolean   @default(false)
+  shouldStopAutomation   Boolean   @default(false)
+  evaluatedAt            DateTime            @default(now())
+  recoveryExecutions     RecoveryExecution[]
+
+  @@index([decision])
+  @@index([evaluatedAt])
+  @@map("policy_decisions")
+}
+
+model PolicyRule {
+  id            String   @id @default(uuid())
+  merchantId    String
+  merchant      Merchant @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  name          String
+  description   String?
+  ruleType      String   // e.g. "MAX_DISCOUNT", "COOL_DOWN_HOURS", "AMOUNT_THRESHOLD"
+  conditionJson Json
+  isEnabled     Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([merchantId, isEnabled])
+  @@map("policy_rules")
+}
+
+model RecoveryAction {
+  id                   String               @id @default(uuid())
+  riskEventId          String               @unique
+  riskEvent            RiskEvent            @relation(fields: [riskEventId], references: [id], onDelete: Cascade)
+  policyDecision       PolicySafetyDecision
+  status               RecoveryStatus
+  razorpayPaymentLinkId String?
+  razorpayPaymentId    String?
+  recoveredAmount      Int?                 // in paise
+  executedAt           DateTime?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+
+  @@index([status])
+  @@map("recovery_actions")
+}
+
+model AuditLog {
+  id          String     @id @default(uuid())
+  merchantId  String
+  merchant    Merchant   @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  actor       AuditActor
+  action      String
+  riskEventId String?
+  details     Json
+  createdAt   DateTime   @default(now())
+
+  @@index([merchantId, createdAt])
+  @@map("audit_logs")
+}
+
+model RecoveryExecution {
+  id                String         @id @default(uuid())
+  riskEventId       String
+  riskEvent         RiskEvent      @relation(fields: [riskEventId], references: [id], onDelete: Cascade)
+  policyDecisionId  String
+  policyDecision    PolicyDecision @relation(fields: [policyDecisionId], references: [id], onDelete: Cascade)
+  action            String         // SMART_RETRY, CUSTOMER_DUNNING, DYNAMIC_PAYMENT_LINK, ESCALATE_HUMAN, NONE
+  status            String         // SUCCESS, FAILED, PENDING, SKIPPED, ESCALATED
+  provider          String         // SIMULATOR, RAZORPAY_TEST
+  providerReference String?
+  recoveredAmount   Int            @default(0) // in minor currency units (paise)
+  currency          String         @default("INR")
+  failureReason     String?
+  idempotencyKey    String         @unique
+  metadata          Json?
+  executedAt        DateTime       @default(now())
+
+  @@index([riskEventId])
+  @@index([status])
+  @@index([action])
+  @@index([executedAt])
+  @@map("recovery_executions")
+}
+
+model RecoveryCommunicationTask {
+  id                String    @id @default(uuid())
+  riskEventId       String
+  policyDecisionId  String
+  customerReference String
+  action            String
+  reason            String
+  status            String    @default("PENDING")
+  createdAt         DateTime  @default(now())
+
+  @@index([riskEventId])
+  @@index([status])
+  @@map("recovery_communication_tasks")
+}
+
+model HumanReviewTask {
+  id                String    @id @default(uuid())
+  riskEventId       String
+  policyDecisionId  String
+  reason            String
+  priority          String    @default("MEDIUM")
+  status            String    @default("OPEN")
+  createdAt         DateTime  @default(now())
+
+  @@index([riskEventId])
+  @@index([status])
+  @@map("human_review_tasks")
+}

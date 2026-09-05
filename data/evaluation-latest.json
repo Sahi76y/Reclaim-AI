@@ -1,0 +1,232 @@
+{
+  "evaluationId": "eval_1788572361165_yfmol",
+  "evaluatedAt": "2026-09-05T01:39:21.165Z",
+  "datasetSize": 1000,
+  "durationMs": 18,
+  "providerMode": {
+    "providerMode": "RAZORPAY_TEST_SIMULATION",
+    "label": "Razorpay Test Mode simulation",
+    "isRealMoneyMoved": false,
+    "isLiveApi": false,
+    "disclaimer": "All recovery transactions were executed strictly in Razorpay Test Mode simulation. No real financial debits or bank settlements occurred.",
+    "razorpayMode": "test"
+  },
+  "revenueSummary": {
+    "totalRevenueAtRiskPaise": 814358400,
+    "totalRevenueAtRiskINR": 8143584,
+    "totalGroundTruthRecoverablePaise": 533417100,
+    "totalGroundTruthRecoverableINR": 5334171,
+    "totalAIRecommendedValuePaise": 668945100,
+    "totalAIRecommendedValueINR": 6689451,
+    "totalPolicyApprovedValuePaise": 568139100,
+    "totalPolicyApprovedValueINR": 5681391,
+    "totalActuallyRecoveredPaise": 211247600,
+    "totalActuallyRecoveredINR": 2112476,
+    "recoveryRateAgainstRecoverable": 39.6,
+    "recoveryRateAgainstTotalRisk": 25.94
+  },
+  "decisionSummary": {
+    "totalCasesEvaluated": 1000,
+    "casesRecommendedForRecovery": 805,
+    "casesApprovedForAutonomousRecovery": 553,
+    "casesModifiedByPolicy": 159,
+    "casesEscalatedToHuman": 239,
+    "casesBlocked": 42,
+    "casesWithNoRecoveryAction": 42
+  },
+  "safetySummary": {
+    "unsafeActionsPrevented": 201,
+    "nonRecoverableCasesBlocked": 153,
+    "excessiveRetryCasesEscalated": 188,
+    "highValueCasesEscalated": 15,
+    "lowConfidenceCasesEscalated": 0,
+    "falseRecoveryAttempts": 0,
+    "policyBlockedRecoveryOpportunities": 33
+  },
+  "strategyBreakdown": {
+    "SMART_RETRY": {
+      "action": "SMART_RETRY",
+      "caseCount": 277,
+      "amountAtRiskPaise": 221739000,
+      "amountAtRiskINR": 2217390,
+      "recommendedAmountPaise": 221739000,
+      "recommendedAmountINR": 2217390,
+      "approvedAmountPaise": 221739000,
+      "approvedAmountINR": 2217390,
+      "recoveredAmountPaise": 155612000,
+      "recoveredAmountINR": 1556120,
+      "recoveryRate": 70.18
+    },
+    "DYNAMIC_PAYMENT_LINK": {
+      "action": "DYNAMIC_PAYMENT_LINK",
+      "caseCount": 338,
+      "amountAtRiskPaise": 281048000,
+      "amountAtRiskINR": 2810480,
+      "recommendedAmountPaise": 269892000,
+      "recommendedAmountINR": 2698920,
+      "approvedAmountPaise": 281048000,
+      "approvedAmountINR": 2810480,
+      "recoveredAmountPaise": 42512000,
+      "recoveredAmountINR": 425120,
+      "recoveryRate": 15.13
+    },
+    "CUSTOMER_DUNNING": {
+      "action": "CUSTOMER_DUNNING",
+      "caseCount": 104,
+      "amountAtRiskPaise": 65352100,
+      "amountAtRiskINR": 653521,
+      "recommendedAmountPaise": 177314100,
+      "recommendedAmountINR": 1773141,
+      "approvedAmountPaise": 65352100,
+      "approvedAmountINR": 653521,
+      "recoveredAmountPaise": 13123600,
+      "recoveredAmountINR": 131236,
+      "recoveryRate": 20.08
+    },
+    "ESCALATE_HUMAN": {
+      "action": "ESCALATE_HUMAN",
+      "caseCount": 239,
+      "amountAtRiskPaise": 210923500,
+      "amountAtRiskINR": 2109235,
+      "recommendedAmountPaise": 0,
+      "recommendedAmountINR": 0,
+      "approvedAmountPaise": 0,
+      "approvedAmountINR": 0,
+      "recoveredAmountPaise": 0,
+      "recoveredAmountINR": 0,
+      "recoveryRate": 0
+    },
+    "NONE": {
+      "action": "NONE",
+      "caseCount": 42,
+      "amountAtRiskPaise": 35295800,
+      "amountAtRiskINR": 352958,
+      "recommendedAmountPaise": 0,
+      "recommendedAmountINR": 0,
+      "approvedAmountPaise": 0,
+      "approvedAmountINR": 0,
+      "recoveredAmountPaise": 0,
+      "recoveredAmountINR": 0,
+      "recoveryRate": 0
+    }
+  },
+  "riskCategoryBreakdown": {
+    "TEMPORARY_PAYMENT_FAILURE": {
+      "category": "TEMPORARY_PAYMENT_FAILURE",
+      "caseCount": 338,
+      "amountAtRiskPaise": 266210300,
+      "amountAtRiskINR": 2662103,
+      "recoverableAmountPaise": 266210300,
+      "recoverableAmountINR": 2662103,
+      "recommendedAmountPaise": 266210300,
+      "recommendedAmountINR": 2662103,
+      "approvedAmountPaise": 221739000,
+      "approvedAmountINR": 2217390,
+      "recoveredAmountPaise": 155612000,
+      "recoveredAmountINR": 1556120,
+      "recoveryRate": 58.45
+    },
+    "INSUFFICIENT_FUNDS": {
+      "category": "INSUFFICIENT_FUNDS",
+      "caseCount": 171,
+      "amountAtRiskPaise": 110900000,
+      "amountAtRiskINR": 1109000,
+      "recoverableAmountPaise": 76848200,
+      "recoverableAmountINR": 768482,
+      "recommendedAmountPaise": 110900000,
+      "recommendedAmountINR": 1109000,
+      "approvedAmountPaise": 65352100,
+      "approvedAmountINR": 653521,
+      "recoveredAmountPaise": 13123600,
+      "recoveredAmountINR": 131236,
+      "recoveryRate": 11.83
+    },
+    "CUSTOMER_ACTION_REQUIRED": {
+      "category": "CUSTOMER_ACTION_REQUIRED",
+      "caseCount": 200,
+      "amountAtRiskPaise": 198032000,
+      "amountAtRiskINR": 1980320,
+      "recoverableAmountPaise": 140358600,
+      "recoverableAmountINR": 1403586,
+      "recommendedAmountPaise": 198032000,
+      "recommendedAmountINR": 1980320,
+      "approvedAmountPaise": 198032000,
+      "approvedAmountINR": 1980320,
+      "recoveredAmountPaise": 42512000,
+      "recoveredAmountINR": 425120,
+      "recoveryRate": 21.47
+    },
+    "REPEATED_PAYMENT_FAILURE": {
+      "category": "REPEATED_PAYMENT_FAILURE",
+      "caseCount": 150,
+      "amountAtRiskPaise": 120923500,
+      "amountAtRiskINR": 1209235,
+      "recoverableAmountPaise": 30000000,
+      "recoverableAmountINR": 300000,
+      "recommendedAmountPaise": 93802800,
+      "recommendedAmountINR": 938028,
+      "approvedAmountPaise": 83016000,
+      "approvedAmountINR": 830160,
+      "recoveredAmountPaise": 0,
+      "recoveredAmountINR": 0,
+      "recoveryRate": 0
+    },
+    "ABANDONED_CHECKOUT": {
+      "category": "ABANDONED_CHECKOUT",
+      "caseCount": 99,
+      "amountAtRiskPaise": 82996800,
+      "amountAtRiskINR": 829968,
+      "recoverableAmountPaise": 20000000,
+      "recoverableAmountINR": 200000,
+      "recommendedAmountPaise": 0,
+      "recommendedAmountINR": 0,
+      "approvedAmountPaise": 0,
+      "approvedAmountINR": 0,
+      "recoveredAmountPaise": 0,
+      "recoveredAmountINR": 0,
+      "recoveryRate": 0
+    },
+    "NON_RECOVERABLE": {
+      "category": "NON_RECOVERABLE",
+      "caseCount": 42,
+      "amountAtRiskPaise": 35295800,
+      "amountAtRiskINR": 352958,
+      "recoverableAmountPaise": 0,
+      "recoverableAmountINR": 0,
+      "recommendedAmountPaise": 0,
+      "recommendedAmountINR": 0,
+      "approvedAmountPaise": 0,
+      "approvedAmountINR": 0,
+      "recoveredAmountPaise": 0,
+      "recoveredAmountINR": 0,
+      "recoveryRate": 0
+    }
+  },
+  "baselineComparison": {
+    "baseline": {
+      "recoveredAmountPaise": 129687000,
+      "recoveredAmountINR": 1296870,
+      "recoveryRateAgainstRecoverable": 24.31,
+      "recoveryRateAgainstTotalRisk": 15.92,
+      "recoveryAttempts": 225,
+      "escalations": 239,
+      "unsafeActionsPrevented": 237
+    },
+    "reclaimai": {
+      "recoveredAmountPaise": 211247600,
+      "recoveredAmountINR": 2112476,
+      "recoveryRateAgainstRecoverable": 39.6,
+      "recoveryRateAgainstTotalRisk": 25.94,
+      "recoveryAttempts": 805,
+      "escalations": 239,
+      "unsafeActionsPrevented": 201
+    },
+    "lift": {
+      "netRecoveredAmountPaise": 81560600,
+      "netRecoveredAmountINR": 815606,
+      "recoveryRateDiff": 15.29,
+      "liftPercentage": 62.89,
+      "summary": "ReclaimAI recovered ₹8,15,606 more than baseline (+62.89% lift), driven by adaptive payment links and customer dunning workflows."
+    }
+  }
+}

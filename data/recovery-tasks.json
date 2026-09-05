@@ -1,0 +1,379 @@
+{
+  "communicationTasks": [
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788560298472_rwhby7c",
+      "createdAt": "2026-09-04T22:18:18.472Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788560327423_rwlqcki",
+      "createdAt": "2026-09-04T22:18:47.423Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788560346034_h53eczj",
+      "createdAt": "2026-09-04T22:19:06.034Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_1788560604043_02zny89",
+      "customerReference": "cust_anon_evt_syn_000001",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788560604053_6rbq20b",
+      "createdAt": "2026-09-04T22:23:24.053Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_1788560636888_02gcw2t",
+      "customerReference": "cust_anon_evt_syn_000001",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788560636898_jzrvmfy",
+      "createdAt": "2026-09-04T22:23:56.898Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788560649274_ay7tggm",
+      "createdAt": "2026-09-04T22:24:09.274Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788560719048_53sxbde",
+      "createdAt": "2026-09-04T22:25:19.048Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788564222197_z9m07n1",
+      "createdAt": "2026-09-04T23:23:42.197Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788564249933_ug2bsa0",
+      "createdAt": "2026-09-04T23:24:09.933Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_1788564300721_2kcx0az",
+      "customerReference": "cust_anon_evt_syn_000001",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788564300733_y6jm1iw",
+      "createdAt": "2026-09-04T23:25:00.733Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788564310474_43f5m5d",
+      "createdAt": "2026-09-04T23:25:10.474Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788565281889_6gwhyba",
+      "createdAt": "2026-09-04T23:41:21.889Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788565884583_28kcz1s",
+      "createdAt": "2026-09-04T23:51:24.583Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_1788565929211_dd2km94",
+      "customerReference": "cust_anon_evt_syn_000001",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788565929222_qbb5xlu",
+      "createdAt": "2026-09-04T23:52:09.222Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788565997872_5rxf6ep",
+      "createdAt": "2026-09-04T23:53:17.872Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_1788566034584_caaql2h",
+      "customerReference": "cust_anon_evt_syn_000001",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788566034596_zk37u0h",
+      "createdAt": "2026-09-04T23:53:54.596Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788569208318_8rhbk0f",
+      "createdAt": "2026-09-05T00:46:48.318Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788570438465_j2zlg86",
+      "createdAt": "2026-09-05T01:07:18.465Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788570667111_3l0p7ok",
+      "createdAt": "2026-09-05T01:11:07.111Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788571286190_qdm5d30",
+      "createdAt": "2026-09-05T01:21:26.190Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788571657271_1oqheuv",
+      "createdAt": "2026-09-05T01:27:37.271Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "customerReference": "cust_test_999",
+      "action": "CUSTOMER_DUNNING",
+      "reason": "Automated dunning communication task queued for payment recovery",
+      "status": "PENDING",
+      "id": "task_com_1788572360606_axbp0dq",
+      "createdAt": "2026-09-05T01:39:20.606Z"
+    }
+  ],
+  "humanReviewTasks": [
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788560298483_dojk3to",
+      "createdAt": "2026-09-04T22:18:18.483Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788560327434_syz4igi",
+      "createdAt": "2026-09-04T22:18:47.434Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788560346045_xmet3gl",
+      "createdAt": "2026-09-04T22:19:06.045Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788560649285_sklq2nu",
+      "createdAt": "2026-09-04T22:24:09.285Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788560719062_xbz14h6",
+      "createdAt": "2026-09-04T22:25:19.062Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788564222208_zmj21fi",
+      "createdAt": "2026-09-04T23:23:42.208Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788564249949_2kbvdxz",
+      "createdAt": "2026-09-04T23:24:09.949Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788564310490_oqpztm6",
+      "createdAt": "2026-09-04T23:25:10.490Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788565281915_pv0g4jk",
+      "createdAt": "2026-09-04T23:41:21.915Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788565884606_6fezbkz",
+      "createdAt": "2026-09-04T23:51:24.606Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788565997886_m2iyrtq",
+      "createdAt": "2026-09-04T23:53:17.886Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788569208338_hdheo4o",
+      "createdAt": "2026-09-05T00:46:48.338Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788570438488_nmr2qmn",
+      "createdAt": "2026-09-05T01:07:18.488Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788570667131_bs99njh",
+      "createdAt": "2026-09-05T01:11:07.131Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788571286208_49gpp3k",
+      "createdAt": "2026-09-05T01:21:26.209Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788571657292_q8bnpmg",
+      "createdAt": "2026-09-05T01:27:37.292Z"
+    },
+    {
+      "riskEventId": "evt_syn_000001",
+      "policyDecisionId": "dec_test_001",
+      "reason": "Critical subscription requires human outreach",
+      "priority": "HIGH",
+      "status": "OPEN",
+      "id": "task_rev_1788572360627_dygxkpe",
+      "createdAt": "2026-09-05T01:39:20.627Z"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "riskEventId": "evt_syn_000001",
+    "action": "SMART_RETRY",
+    "confidenceScore": 0.93,
+    "reasoning": "Customer has a healthy payment track record (3 successful payments) and transaction failed due to transient gateway latency. Automated exponential backoff retry is the optimal zero-friction path.",
+    "diagnosisSummary": "Transient network/gateway timeout on UPI switch.",
+    "likelyCause": "Intermittent latency spike at acquiring or issuing bank interface (GATEWAY_TIMEOUT).",
+    "severity": "LOW",
+    "expectedBenefit": "Fully frictionless recovery with zero customer friction or cart rebuilding required.",
+    "safetyFlags": {
+      "requiresCustomerAction": false,
+      "requiresHumanReview": false,
+      "shouldStopAutomation": false
+    },
+    "provider": "mock",
+    "model": "mock-reasoning-v1",
+    "createdAt": "2026-09-05T01:39:20.540Z"
+  },
+  {
+    "riskEventId": "evt_syn_000002",
+    "action": "SMART_RETRY",
+    "confidenceScore": 0.93,
+    "reasoning": "Customer has a healthy payment track record (3 successful payments) and transaction failed due to transient gateway latency. Automated exponential backoff retry is the optimal zero-friction path.",
+    "diagnosisSummary": "Transient network/gateway timeout on UPI switch.",
+    "likelyCause": "Intermittent latency spike at acquiring or issuing bank interface (GATEWAY_TIMEOUT).",
+    "severity": "LOW",
+    "expectedBenefit": "Fully frictionless recovery with zero customer friction or cart rebuilding required.",
+    "safetyFlags": {
+      "requiresCustomerAction": false,
+      "requiresHumanReview": false,
+      "shouldStopAutomation": false
+    },
+    "provider": "mock",
+    "model": "mock-reasoning-v1",
+    "createdAt": "2026-09-05T01:39:20.776Z"
+  },
+  {
+    "riskEventId": "evt_isolation_test",
+    "action": "SMART_RETRY",
+    "confidenceScore": 0.88,
+    "reasoning": "Transient failure with high success history",
+    "diagnosisSummary": "Network timeout at acquiring bank",
+    "likelyCause": "Bank gateway dropped connection",
+    "severity": "LOW",
+    "expectedBenefit": "Immediate recovery without customer friction",
+    "safetyFlags": {
+      "requiresCustomerAction": false,
+      "requiresHumanReview": false,
+      "shouldStopAutomation": false
+    },
+    "provider": "mock",
+    "model": "mock-reasoning-v1",
+    "createdAt": "2026-09-05T01:39:20.264Z"
+  },
+  {
+    "riskEventId": "evt_edge_retry_limit",
+    "action": "SMART_RETRY",
+    "confidenceScore": 0.85,
+    "reasoning": "AI recommends retry attempt despite previous failure",
+    "diagnosisSummary": "Transient network timeout",
+    "likelyCause": "Acquiring bank timeout",
+    "severity": "LOW",
+    "expectedBenefit": "Recover without customer friction",
+    "safetyFlags": {
+      "requiresCustomerAction": false,
+      "requiresHumanReview": false,
+      "shouldStopAutomation": false
+    },
+    "provider": "mock",
+    "model": "mock-reasoning-v1",
+    "createdAt": "2026-09-01T10:05:00.000Z"
+  },
+  {
+    "riskEventId": "evt_edge_high_value",
+    "action": "SMART_RETRY",
+    "confidenceScore": 0.88,
+    "reasoning": "Transient network failure on high-value transaction",
+    "diagnosisSummary": "Network timeout at card switch",
+    "likelyCause": "Card switch congestion",
+    "severity": "LOW",
+    "expectedBenefit": "Recover high value transaction",
+    "safetyFlags": {
+      "requiresCustomerAction": false,
+      "requiresHumanReview": false,
+      "shouldStopAutomation": false
+    },
+    "provider": "mock",
+    "model": "mock-reasoning-v1",
+    "createdAt": "2026-09-01T10:05:00.000Z"
+  },
+  {
+    "riskEventId": "evt_edge_low_confidence",
+    "action": "SMART_RETRY",
+    "confidenceScore": 0.52,
+    "reasoning": "Ambiguous failure telemetry; model uncertain",
+    "diagnosisSummary": "Unconfirmed gateway status",
+    "likelyCause": "Unrecognized bank error response",
+    "severity": "LOW",
+    "expectedBenefit": "Attempt recovery if transient",
+    "safetyFlags": {
+      "requiresCustomerAction": false,
+      "requiresHumanReview": false,
+      "shouldStopAutomation": false
+    },
+    "provider": "mock",
+    "model": "mock-reasoning-v1",
+    "createdAt": "2026-09-01T10:05:00.000Z"
+  },
+  {
+    "riskEventId": "evt_edge_non_recoverable",
+    "action": "NONE",
+    "confidenceScore": 0.95,
+    "reasoning": "Account is closed or frozen permanently; no recovery possible",
+    "diagnosisSummary": "Account closed or frozen permanently",
+    "likelyCause": "Issuing bank reported account closed",
+    "severity": "LOW",
+    "expectedBenefit": "Avoid fraudulent retry overhead and gateway fees",
+    "safetyFlags": {
+      "requiresCustomerAction": false,
+      "requiresHumanReview": false,
+      "shouldStopAutomation": true
+    },
+    "provider": "mock",
+    "model": "mock-reasoning-v1",
+    "createdAt": "2026-09-01T10:05:00.000Z"
+  },
+  {
+    "riskEventId": "evt_edge_safe_smart_retry",
+    "action": "SMART_RETRY",
+    "confidenceScore": 0.88,
+    "reasoning": "Transient failure with high historical success",
+    "diagnosisSummary": "Transient network timeout",
+    "likelyCause": "Acquiring bank timeout",
+    "severity": "LOW",
+    "expectedBenefit": "Seamless frictionless recovery",
+    "safetyFlags": {
+      "requiresCustomerAction": false,
+      "requiresHumanReview": false,
+      "shouldStopAutomation": false
+    },
+    "provider": "mock",
+    "model": "mock-reasoning-v1",
+    "createdAt": "2026-09-01T10:05:00.000Z"
+  }
+]
