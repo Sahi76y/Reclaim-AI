@@ -19,17 +19,17 @@ export function HeroSection() {
           </div>
 
           <h1 className="font-sans text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">
-            ReclaimAI —{" "}
+            AI Revenue{" "}
             <span className="bg-gradient-to-r from-red-500 via-rose-500 to-red-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(239,68,68,0.5)]">
-              AI Revenue Recovery
+              Recovery
             </span>
           </h1>
 
           <p className="max-w-2xl text-xs font-medium text-slate-200 sm:text-sm">
-            Intelligent recovery for failed payments, with safety rules built in.
+            Find at-risk payments, choose the safest recovery action, and recover more revenue.
           </p>
           <p className="max-w-2xl text-xs text-slate-400">
-            Find at-risk payments, choose the safest recovery action, and recover more revenue.
+            Intelligent recovery for failed payments, with safety rules built in.
           </p>
         </div>
 

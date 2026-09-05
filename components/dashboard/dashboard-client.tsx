@@ -10,7 +10,6 @@ import { FailureDonutChart } from "./failure-donut-chart";
 import { RecoveryStrategiesCard } from "./recovery-strategies-card";
 import { RecoveryTrendChart } from "./recovery-trend-chart";
 import { RecentRecoveryTable } from "./recent-recovery-table";
-import { TrustRibbon } from "./trust-ribbon";
 import { DecisionsSummary } from "./decisions-summary";
 import { SafetySection } from "./safety-section";
 import { BaselineComparison } from "./baseline-comparison";
@@ -167,9 +166,6 @@ export function DashboardClient({ initialEvaluation }: DashboardClientProps) {
             <RecentRecoveryTable />
           </div>
         </div>
-
-        {/* Trust & Capability Ribbon + Console Footer */}
-        <TrustRibbon />
       </div>
 
       {/* ========================================================================= */}
